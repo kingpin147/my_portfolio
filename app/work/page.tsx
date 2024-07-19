@@ -6,13 +6,9 @@ import { BsArrowUpRight, BsGithub } from "react-icons/bs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
 import Image from "next/image";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
-
-
+import WorkSliderBtns from "@/components/WorkSliderBtns";
 
 const projects = [
   {
@@ -21,7 +17,7 @@ const projects = [
     title: "project 1",
     description: "lorem",
     stack: [{ name: "Html 5" }, { name: "CSS" }, { name: "Javascript" }],
-    image: "/public/WebsiteBanners/1.jpg",
+    image: "/WebsiteBanners/1.png",
     live: "",
     github: "",
   },
@@ -31,7 +27,7 @@ const projects = [
     title: "project 2",
     description: "lorem",
     stack: [{ name: "Html 5" }, { name: "CSS" }, { name: "Javascript" }],
-    image: "/public/WebsiteBanners/2.jpg",
+    image: "/WebsiteBanners/2.png",
     live: "",
     github: "",
   },
@@ -41,7 +37,7 @@ const projects = [
     title: "project 3",
     description: "lorem",
     stack: [{ name: "Html 5" }, { name: "CSS" }, { name: "Javascript" }],
-    image: "/public/WebsiteBanners/3.jpg",
+    image: "/WebsiteBanners/3.png",
     live: "",
     github: "",
   },
@@ -50,7 +46,7 @@ const projects = [
 const Work = () => {
   const [project, setProject] = useState(projects[0]);
 
-  const handleSlideChange = (swiper:any)=>{
+  const handleSlideChange = (swiper: any) => {
     const currentIndex = swiper.activeIndex;
     setProject(projects[currentIndex]);
   };
@@ -112,33 +108,41 @@ const Work = () => {
               </div>
             </div>
           </div>
-          <div className="w-full xl:w-[50%]">
-          <Swiper 
-  spaceBetween={30}
-  slidesPerView={1}
-  className="xl:h-[520px] mb-12"
-  onSlideChange={handleSlideChange}
->
-  {projects.map((project, index) => {
-    return (
-      <SwiperSlide key={index} className="w-full">
-        <div className="h-[560px] relative group flex justify-center items-center bg-pink-50/20">
-          {/* Content for each slide */}
-          <div></div>
-          <div className="relative w-full hifull">
-            <Image
-              src={project.image}
-              fill
-              className="object-cover"
-              alt="Project Image"
-            />
-          </div>
-        </div>
-      </SwiperSlide>
-    );
-  })}
-</Swiper>
-
+          <div className="w-full xl:w-[50%] relative">
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={1}
+              className="xl:h-[520px] mb-12"
+              onSlideChange={handleSlideChange}
+            >
+              {projects.map((project, index) => {
+                return (
+                  <SwiperSlide key={index} className="w-full">
+                    <div className="h-[560px] relative group flex justify-center items-center bg-pink-50/20">
+                      {/* Content for each slide */}
+                      <div className="absolute top-0 left-0 w-full h-full bg-black/10 z-10"></div>
+                      <div className="w-full h-full">
+                        <Image
+                          src={project.image}
+                          fill
+                          className="group-hover:scale-110 transition-all duration-500"
+                          alt="Project Image"
+                        />
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+              <WorkSliderBtns
+                containerStyles={
+                  "flex gap-2 absolute bottom-1/2 transform translate-y-1/2  xl:right-0 z-10 w-full justify-between  "
+                }
+                btnStyles={
+                  "bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+                }
+                iconStyles={""}
+              />
+            </Swiper>
           </div>
         </div>
       </div>
