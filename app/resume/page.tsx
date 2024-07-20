@@ -3,6 +3,8 @@
 import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaDocker, FaPython, FaWix } from "react-icons/fa";
 import { SiTailwindcss, SiNextdotjs, SiApachekafka, SiKong, SiTypescript, SiFastapi, SiPoetry } from "react-icons/si";
 
+
+
 const about = {
   icon: "",
   title: "About me",
@@ -178,7 +180,7 @@ const Resume = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
+      className="min-h-[80vh] flex items-center justify-center py-14 xl:py-10"
     >
       <div className="container mx-auto">
         <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-[60px]">
